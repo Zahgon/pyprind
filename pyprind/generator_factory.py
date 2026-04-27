@@ -10,9 +10,7 @@ from .progpercent import ProgPercent
 
 
 def generator_factory(mother_class):
-    def generator_progress(iteritem, iterations=None, *args, **kw):
-        pass
-    return generator_progress
+    pass
 
 prog_percent = generator_factory(ProgPercent)
 prog_bar = generator_factory(ProgBar)

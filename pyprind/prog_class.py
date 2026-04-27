@@ -76,10 +76,7 @@ class Prog():
             in each iteration.
 
         """
-        self.item_id = item_id
-        self.cnt += iterations
-        self._print(force_flush=force_flush)
-        self._finish()
+        pass
 
     def stop(self):
         """Stops the progress bar / percentage indicator if necessary."""
@@ -91,45 +88,26 @@ class Prog():
 
     def _elapsed(self):
         """ Returns elapsed time at update. """
-        self.last_time = time.time()
-        return self.last_time - self.start
+        pass
 
     def _calc_eta(self):
         """ Calculates estimated time left until completion. """
-        elapsed = self._elapsed()
-        if self.cnt == 0 or elapsed < 0.001:
-            return None
-        rate = float(self.cnt) / elapsed
-        self.eta = (float(self.max_iter) - float(self.cnt)) / rate
+        pass
 
     def _calc_percent(self):
         """Calculates the rel. progress in percent with 2 decimal points."""
-        return round(self.cnt / self.max_iter * 100, 2)
+        pass
 
     def _no_stream(self, text=None):
         """ Called when no valid output stream is available. """
         pass
 
     def _get_time(self, _time):
-        if (_time < 86400):
-            return time.strftime("%H:%M:%S", time.gmtime(_time))
-        else:
-            s = (str(int(_time // 3600)) + ':' +
-                 time.strftime("%M:%S", time.gmtime(_time)))
-            return s
+        pass
 
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
-        if self.active and self.cnt >= self.max_iter:
-            self.total_time = self._elapsed()
-            self.end = time.time()
-            self.last_progress -= 1  # to force a refreshed _print()
-            self._print()
-            if self.track:
-                self._stream_out('\nTotal time elapsed: ' +
-                                 self._get_time(self.total_time))
-            self._stream_out('\n')
-            self.active = False
+        pass
 
     def _print_title(self):
         """ Prints tracking title at initialization. """
@@ -137,12 +115,11 @@ class Prog():
 
     def _cache_eta(self):
         """ Prints the estimated time left."""
-        self._calc_eta()
-        self._cached_output += ' | ETA: ' + self._get_time(self.eta)
+        pass
 
     def _cache_item_id(self):
         """ Prints an item id behind the tracking object."""
-        self._cached_output += ' | Item ID: %s' % self.item_id
+        pass
 
     def __repr__(self):
         str_start = time.strftime('%m/%d/%Y %H:%M:%S',

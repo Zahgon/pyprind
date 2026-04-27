@@ -53,28 +53,8 @@ class ProgPercent(Prog):
                 self.process.get_memory_percent()
 
     def _cache_percent_indicator(self, last_progress):
-        self._cached_output += '[%3d %%]' % (last_progress)
+        pass
 
     def _print(self, force_flush=False):
         """ Prints formatted percentage and tracked time to the screen."""
-        self._stream_flush()
-        next_perc = self._calc_percent()
-        if self.update_interval:
-            do_update = time.time() - self.last_time >= self.update_interval
-        elif force_flush:
-            do_update = True
-        else:
-            do_update = next_perc > self.last_progress
-
-        if do_update and self.active:
-            self.last_progress = next_perc
-            self._cache_percent_indicator(self.last_progress)
-            if self.track:
-                self._cached_output += ' Time elapsed: ' + \
-                                       self._get_time(self._elapsed())
-                self._cache_eta()
-            if self.item_id:
-                self._cache_item_id()
-            self._stream_out('\r%s' % self._cached_output)
-            self._stream_flush()
-            self._cached_output = ''
+        pass

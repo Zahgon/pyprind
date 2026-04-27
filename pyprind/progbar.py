@@ -70,27 +70,7 @@ class ProgBar(Prog):
             # float. Thus this fix to prevent float multiplication of chars.
 
     def _cache_progress_bar(self, progress):
-        remaining = self.bar_width - progress
-        self._cached_output += '\r0% [{}{}] 100%'.format(self.bar_char * int(progress),
-                                               ' ' * int(remaining))
+        pass
 
     def _print(self, force_flush=False):
-        progress = floor(self._calc_percent() / 100 * self.bar_width)
-        if self.update_interval:
-            do_update = time.time() - self.last_time >= self.update_interval
-        elif force_flush:
-            do_update = True
-        else:
-            do_update = progress > self.last_progress
-
-        if do_update and self.active:
-
-            self._cache_progress_bar(progress)
-            if self.track:
-                self._cache_eta()
-            if self.item_id:
-                self._cache_item_id()
-            self._stream_out('%s' % self._cached_output)
-            self._stream_flush()
-            self._cached_output = ''
-        self.last_progress = progress
+        pass
