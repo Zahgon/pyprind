@@ -83,39 +83,11 @@ class Prog():
 
     def stop(self):
         """Stops the progress bar / percentage indicator if necessary."""
-        self.cnt = self.max_iter
-        self._finish()
+        pass
 
     def _check_stream(self):
         """Determines which output stream (stdout, stderr, or custom) to use"""
-        if self.stream:
-
-            try:
-                supported = ('PYCHARM_HOSTED' in os.environ or
-                             os.isatty(sys.stdout.fileno()))
-
-            # a fix for IPython notebook "IOStream has no fileno."
-            except(UnsupportedOperation):
-                supported = True
-
-            else:
-                if self.stream is not None and hasattr(self.stream, 'write'):
-                    self._stream_out = self.stream.write
-                    self._stream_flush = self.stream.flush
-
-            if supported:
-                if self.stream == 1:
-                    self._stream_out = sys.stdout.write
-                    self._stream_flush = sys.stdout.flush
-                elif self.stream == 2:
-                    self._stream_out = sys.stderr.write
-                    self._stream_flush = sys.stderr.flush
-            else:
-                if self.stream is not None and hasattr(self.stream, 'write'):
-                    self._stream_out = self.stream.write
-                    self._stream_flush = self.stream.flush
-                else:
-                    print('Warning: No valid output stream.')
+        pass
 
     def _elapsed(self):
         """ Returns elapsed time at update. """
@@ -161,9 +133,7 @@ class Prog():
 
     def _print_title(self):
         """ Prints tracking title at initialization. """
-        if self.title:
-            self._stream_out('{}\n'.format(self.title))
-            self._stream_flush()
+        pass
 
     def _cache_eta(self):
         """ Prints the estimated time left."""

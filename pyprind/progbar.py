@@ -63,8 +63,7 @@ class ProgBar(Prog):
 
     def _adjust_width(self):
         """Shrinks bar if number of iterations is less than the bar width"""
-        if self.bar_width > self.max_iter:
-            self.bar_width = int(self.max_iter)
+        pass
             # some Python 3.3.3 users specifically
             # on Linux Red Hat 4.4.7-1, GCC v. 4.4.7
             # reported that self.max_iter was converted to
